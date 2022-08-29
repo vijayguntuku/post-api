@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>post api</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+        <style>
+            body{
+                padding: 30px;
+                background-color:lightgreen;
+                margin: auto;
+              
+            }
+  
+            .form{
+                padding: 10px;
+                
+            }
+        </style>
+        
+    </head>
+    <body>
+        <main>
+        <form name="myfrom" action="" method="get">
+            <h1>Enter your details ...!</h1>
+            <div class="row">
+                <div class="form">
+                    <label>empid</label>
+                    <input type="text" id="empid" placeholder="empid" name="id" required="">
+                </div>
+                <div class="form">
+                    <label>firstname</label>
+                    <input type="text" id="firstname" name="name" placeholder="firstname" required="">
+                </div>
+                <div class="form">
+                    <label>lastname</label>
+                    <input type="text" id="lastname" name="name" placeholder="lastname" required="">
+                </div>
+                <div class="form">
+                    <label>street</label>
+                    <input type="text" id="street" name="street" placeholder="street" required="">
+                </div>
+                <div class="form">
+                    <label>city</label>
+                    <input type="text" id="city" name="city" placeholder="city" required="">
+                </div>
+                <div class="form">
+                    <label>state</label>
+                    <input type="text" id="state" name="state" placeholder="state" required="">
+                </div>
+                <div class="form">
+                    <label>zip</label>
+                    <input type="number" id="zip" name="zip" placeholder="zip" required="">
+                </div>
+                <div class="form">
+                    <label>birthdate</label>
+                    <input type="date" id="birthdate" name="birthdate" placeholder="birthdate" required="">
+                </div>
+                <div class="form">
+                    <label>picurl</label>
+                    <input type="url" id="picurl" name="picurl" placeholder="picurl" required="">
+                </div>
+                <div class="form">
+                    <label>jobTitle</label>
+                    <input type="text" id="jobTitle" name="job" placeholder="jobTitle" required="">
+                </div>
+                <div class="form">
+                    <label>deptid</label>
+                    <input type="text" id="deptid" name="dept" placeholder="deptid" required="">
+                </div>
+                <div class="form">
+                    <label>username</label>
+                    <input type="text" id="username" name="username" placeholder="username" required="">
+                </div>
+                <div class="form">
+                    <label>password</label>
+                    <input type="password" id="password" name="password" placeholder="password" required="">
+                </div>
+                <div class="form">
+                    <label>role</label>
+                    <input type="text" id="role" name="role" placeholder="role" required="">
+                </div>
+                <div class="form">
+                    <label>tenantId</label>
+                    <input type="text" id="id" name="id" placeholder="tenantId" required="">
+                </div>
+                <div class="form">
+                    <label>department</label>
+                    <input type="text" id="dep" name="dept" placeholder="department" required="">
+                </div>
+                <div class="form">
+                    <label>employeeByManagerid</label>
+                    <input type="text" id="id" name="id" placeholder="employeeByManagerid" required="">
+                </div>
+                <div>
+                <input class="button" type="button" value="Register" name="submit" onclick="registeremp()"/>
+                </div>
+                <p id="para"></p>
+    
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    function registeremp()
+    {
+    var url = "https://cors-anywhere.herokuapp.com/http://cloud.wavemakeronline.com/composabilitypilot/Sample_API/services/hrdb/Employee";
+    var data = {
+        "empId": document.getElementById("empid").value,
+        "firstname": document.getElementById("firstname").value,
+        "lastname": document.getElementById("lastname").value,
+        "street": document.getElementById("street").value,
+        "city": document.getElementById("city").value,
+        "state": document.getElementById("state").value,
+        "zip":parseInt(document.getElementById("zip").value),
+        "birthdate": document.getElementById("birthdate").value,
+        "picurl": document.getElementById("picurl").value,
+        "jobTitle": document.getElementById("jobTitle").value,
+        "deptId":document.getElementById("deptid").value,
+        "username": document.getElementById("username").value,
+        "password": document.getElementById("password").value,
+        "role": document.getElementById("role").value,
+        "managerId": document.getElementById("id").value,
+        "tenantId": document.getElementById("id").value,
+        "department": document.getElementById("dep").value,
+        "employeeByManagerId":document.getElementById("id").value
+    }
+    console.log(data);
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", url, true);
+    xhttp.setRequestHeader("Accept", "application/json");
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.onload = () => {
+        if (this.status == 200) {
+            document.getElementById("para").innerHTML=this.responseText;
+            console.log(this.responseText);
+        }
+        else {
+            document.getElementById("para").innerHTML="ERROR......!!!!";
+            console.log("Error");
+        }
+    };
+
+    xhttp.send(data);
+}
+</script>
+
+</body>
+
+</html>
